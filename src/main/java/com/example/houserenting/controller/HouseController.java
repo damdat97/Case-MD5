@@ -55,7 +55,7 @@ public class HouseController {
         return new ResponseEntity<>(houseOptional.get(), HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/find-by-ownerId")  // Tìm theo id User đăng nhập để ra số house đã đăng của id đó!
+    @GetMapping("/find-by-owner-id")  // Tìm theo id User đăng nhập để ra số house đã đăng của id đó!
     public ResponseEntity<Iterable<House>> findHouseByOwnerId(@RequestParam(value = "owner_id") Long owner_id) {
         List<House> houses = (List<House>) houseService.findByOwnerId(owner_id);
         if (houses.isEmpty()) {
@@ -64,7 +64,7 @@ public class HouseController {
         return new ResponseEntity<>(houses, HttpStatus.OK);
     }
 
-    @GetMapping("/sort-by-price-top2")   // Sắp xếp giá từ thấp đến cao
+    @GetMapping("/sort-by-price-top")   // Sắp xếp giá từ thấp đến cao
     public ResponseEntity<Iterable<House>> findTop2() {
         List<House> houses = (List<House>) houseService.findTop2();
         if (houses.isEmpty()) {

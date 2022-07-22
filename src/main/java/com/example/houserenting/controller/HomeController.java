@@ -47,7 +47,7 @@ public class HomeController {
         return new ResponseEntity<>(houses, HttpStatus.OK);
     }
 
-    @GetMapping("/houses/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<House> findById(@PathVariable Long id) {
         Optional<House> houseOptional = houseService.findById(id);
         if (!houseOptional.isPresent()) {

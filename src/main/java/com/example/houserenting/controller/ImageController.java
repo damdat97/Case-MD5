@@ -26,12 +26,12 @@ public class ImageController {
         imageService.save(image);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Iterable<Image>> findImageByHouseId(@PathVariable Long id) {
+    @GetMapping("/find-all-by-house-id")
+    public ResponseEntity<Iterable<Image>> findImageByHouseId(@RequestParam Long id) {
         return new ResponseEntity<>(imageService.findByHouse(id),HttpStatus.OK);
     }
 
-    @GetMapping("/houses/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Image>> findCardById(@PathVariable Long id) {
         return new ResponseEntity<>(imageService.findCardByHouse(id),HttpStatus.OK);
     }
