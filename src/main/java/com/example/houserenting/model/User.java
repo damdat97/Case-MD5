@@ -31,7 +31,7 @@ public class User implements Serializable {
     @NotBlank(message = "Số điện thoại không được trống")
     @Column(nullable = false)
     private String phone;
-    private boolean enabled = true;
+    private boolean enabled = true; 
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
