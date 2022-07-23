@@ -29,7 +29,7 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public Iterable<House> findAll() {
-        return null;
+        return houseRepository.findAll();
     }
 
     @Override

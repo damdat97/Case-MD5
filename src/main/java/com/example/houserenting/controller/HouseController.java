@@ -1,12 +1,8 @@
 package com.example.houserenting.controller;
 
-import com.example.houserenting.model.Category;
 import com.example.houserenting.model.House;
 import com.example.houserenting.service.impl.HouseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

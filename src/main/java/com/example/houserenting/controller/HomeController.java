@@ -24,8 +24,8 @@ public class HomeController {
     HouseServiceImpl houseService;
 
     @GetMapping
-    public ResponseEntity<Page<House>> findAllHouse(@PageableDefault(value = 9) Pageable pageable) {
-        Page<House> houses = houseService.findAll(pageable);
+    public ResponseEntity<Iterable<House>> findAllHouse() {
+        Iterable<House> houses = houseService.findAll();
         return new ResponseEntity<>(houses, HttpStatus.OK);
     }
 
