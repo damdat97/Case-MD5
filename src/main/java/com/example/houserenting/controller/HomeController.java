@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import java.time.LocalDate;
@@ -65,6 +66,15 @@ public class HomeController {
             cus_end = String.valueOf(LocalDate.now());
         }
         Iterable<House> houses = houseService.findByAll("%" + address + "%", start, end, bathroom, bedroom, LocalDate.parse(cus_begin), LocalDate.parse(cus_end));
+        return new ResponseEntity<>(houses, HttpStatus.OK);
+    }
+
+    @GetMapping("/find-top-orders")   // Sắp xếp giá từ thấp đến cao
+    public ResponseEntity<Iterable<House>> findTop2() {
+        List<House> houses = (List<House>) houseService.findTop2();
+        if (houses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(houses, HttpStatus.OK);
     }
 }
