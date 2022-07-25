@@ -69,6 +69,16 @@ public class HouseController {
         return new ResponseEntity<>(houses, HttpStatus.OK);
     }
 
+    @GetMapping("/find-house-rented")
+    public ResponseEntity<Iterable<House>> findHouseRented(@RequestParam(value = "id") Long id) {
+        List<House> houses = (List<House>) houseService.findHouseRented(id);
+        if (houses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(houses, HttpStatus.OK);
+    }
+
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(

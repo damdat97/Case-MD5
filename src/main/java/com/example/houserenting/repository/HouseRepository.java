@@ -60,4 +60,9 @@ public interface HouseRepository extends JpaRepository<House,Long> {
             "(select h.id from house h join orderr o on h.id = o.house_id where :dateBegin <= o.start_time and o.start_time <= :dateEnd or :dateBegin <= o.end_time and o.end_time <= :dateEnd))\n", nativeQuery = true)
     Iterable<House>findByAllThing(@Param("address") String address, @Param("startPrice") int startPrice, @Param("endPrice") int endPrice,
                                   @Param("bathroom") int bathroom, @Param("bedroom") int bedroom, @Param("dateBegin") LocalDate dateBegin, @Param("dateEnd") LocalDate dateEnd);
+
+    @Query(value = "select * from house h\n" +
+            "join orderr o on h.id = o.house_id\n" +
+            "where o.customer_id = :id ;", nativeQuery = true)
+    Iterable<House> findHouseRented(@Param(value = "id") Long id);
 }

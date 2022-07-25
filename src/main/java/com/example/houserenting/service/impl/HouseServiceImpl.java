@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -68,16 +67,6 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public Page<House> findAllByBathroomAndBedroom(int bathroom, int bedroom, Pageable pageable) {
-        return houseRepository.findAllByBathroomAndBedroom(bathroom,bedroom,pageable);
-    }
-
-//    @Override
-//    public Page<House> findAllByStatus(int status ,Pageable pageable) {
-//        return houseRepository.findByStatus(status,pageable);
-//    }
-
-    @Override
     public Iterable<House> findByOwnerId(Long owner_id) {
         return houseRepository.findByOwnerId(owner_id);
     }
@@ -92,10 +81,9 @@ public class HouseServiceImpl implements HouseService {
         return houseRepository.findByAllThing(address, start, end, bathroom, bedroom, cus_begin, cus_end);
     }
 
+    @Override
+    public Iterable<House> findHouseRented(Long id) {
+        return houseRepository.findHouseRented(id);
+    }
 
-//    Cái này tìm không phân trang
-//    @Override
-//    public Iterable<House> findAllByCategory_Id(Long id) {
-//        return houseRepository.findAllByCategory_Id(id);
-//    }
 }
