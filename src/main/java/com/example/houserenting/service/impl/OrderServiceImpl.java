@@ -44,4 +44,9 @@ public class OrderServiceImpl implements OderService {
     public Iterable<Order> findAllOrder() {
         return orderRepository.findAll();
     }
+
+    @Override
+    public Iterable<Order> findAllByCustomerId(Long id) {
+        return orderRepository.findAllByCustomerId(id);
+    }
 }
